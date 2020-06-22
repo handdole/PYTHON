@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Title{% endblock %}
+{% block content %}
+
+<a href="{% url 'create' %}">bookmark create</a>
+<ul>
+    {% for post in posts %}
+    <li>사이트 이름 : {{post.site_name}} / 사이트 주소 : <a href="{{post.url}}">{{post.url}}</a>
+        <a class=".btn-primary" href="../bookupdate/{{post.id}}">수정</a>
+        <a class=".btn-primary" href="{% url 'detail' pk=post.id %}">상세보기</a>
+        <a class=".btn-primary" href="../bookdelete/{{post.id}}">삭제</a>
+        {% endfor %}
+</ul>
+</form>
+<hr color="red">
+{% block pagination %}
+<h3>전체 페이지 수 : {{paginator.count}} </h3>
+<h3>현재 페이지 번호 : {{ page_obj.number }}</h3>
+<h3>페이지 시작과 끝 : {{ page_obj.start_index }} ~ {{ page_obj.end_index }}</h3>
+<!--왼쪽으로-->
+{% if is_paginated %}
+    <ul class="pagination justify-content-center pagination-sm">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'list' %}?page={{ page_obj.previous_page_number }}"
+                tabindex="-1">이전</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+               <a class="page-link" href="#" tabindex="-1">이전</a>
+            </li>
+        {% endif %}
+
+        {% for object in page_obj.paginator.page_range %}
+            <li class="page-item {% if page_obj.number == forloop.counter %}disabled{% endif %}">
+               <a class="page-link" href="{{ request.path }}?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+            </li>
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{% url 'list' %}?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+               <a class="page-link" href="#">Next</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}
+{% endblock %}
+{% endblock %}

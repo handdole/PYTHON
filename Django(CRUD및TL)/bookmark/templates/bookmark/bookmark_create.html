@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Title{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+     <!--  얘가 as_? 따라서 폼이 바뀜  -->
+    {{form.as_ul}}
+    <input class=".btn-primary" type="submit" value="create">
+</form>
+{% endblock %}
+

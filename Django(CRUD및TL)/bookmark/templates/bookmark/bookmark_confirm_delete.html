@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Title{% endblock %}
+
+{% block content %}
+<h3>삭제할 내용 확인</h3>
+<form action="" method="post">
+    {% csrf_token %}
+     <!--  얘가 as_? 따라서 폼이 바뀜  -->
+    sitename :  {{object.site_name}}
+    url : {{object.url}}
+    <input type="submit" value="delete??">
+</form>
+{% endblock %}
