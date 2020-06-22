@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}'전체 검색 첫 화면입니다. '{% endblock %}
+
+{% block content %}
+    <hr color="pink">
+    {% for x in list %}
+        <h2>게시물 번호 : {{ x.id }}</h2>
+        <h3>{{ x.author }}</h3>
+        <a href="{% url 'selectOne' pk=x.id %}">
+        <img src="{{x.photo.url}}" width="200" height="300" ><br>
+        </a>
+        {{ x.text | linebreaksbr}}<br><br>
+        <hr color="pink">
+    {% endfor %}
+{% endblock %}
