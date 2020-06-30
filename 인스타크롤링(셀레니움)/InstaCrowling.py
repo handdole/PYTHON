@@ -95,9 +95,9 @@ class Insta(object):
 
 def main():
     # 페이스북 아이디 입력
-    INSTA_USERNAME = "solo0501@nate.com"
+    INSTA_USERNAME = "아이디"
     # 페이스북 비밀번호 입력
-    INSTA_PASSWORD = "yesorno0623#"
+    INSTA_PASSWORD = "비밀번호"
     # sys.argv는 프로그램을 실행할 때 입력된 값을 읽어 들일 수 있는 파이썬 라이브러리이다.
     # sys.argv[0]는 입력받은 값 중에서 파이썬 프로그램 이름인 .py이므로 필요 없는 값이다.
     # if len(sys.argv) > 1:
